@@ -22,8 +22,6 @@ describe("E2E: book list view", function() {
 		return book.title;
 	});
 
-//	console.log(orderedTitles);
-
 
 	beforeEach(function() {
 		browser.get('#/books');
@@ -62,5 +60,35 @@ describe("E2E: book list view", function() {
 	});
 
 	// ----------------------------------------
+	it('should allow filtering by book title', function() {
+		// get the string "Coffee"
+		var searchText = orderedTitles[0].substr(0,6);
+		element(by.model('searchText')).sendKeys(searchText);
+		expect( element.all(by.repeater('book in books')
+				.column('book.title'))
+					.getText()).toEqual( [ orderedTitles[0] ]);
+	});
+
+	// ----------------------------------------
+	it('should allow filtering by author', function() {
+		// get the string "Andreas"
+		var searchText = expectedBooks[0].author.substr(0,7);
+		element(by.model('searchText')).sendKeys(searchText);
+		expect( element.all(by.repeater('book in books')
+				.column('book.title'))
+					.getText()).toEqual( [ expectedBooks[0].title ]);
+	});
+
+	// ----------------------------------------
+	it('should allow filtering by isbn', function() {
+		// get the string "050-1"
+		var searchText = expectedBooks[0].isbn.substr(-5,5);
+		element(by.model('searchText')).sendKeys(searchText);
+		expect( element.all(by.repeater('book in books')
+				.column('book.title'))
+					.getText()).toEqual( [ expectedBooks[0].title ]);
+	});
+
+
 
 });
