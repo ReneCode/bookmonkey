@@ -1,4 +1,4 @@
-bmApp.controller('BookDetailsCtrl', function($scope) {
+bmApp.controller('BookDetailsCtrl', function($scope, $location) {
 	$scope.book = {
 		title: 'JavaScript für Enterprise-Entwickler',
 		subtitle: 'Professionell programmieren im Browser und auf dem Server',
@@ -11,5 +11,10 @@ bmApp.controller('BookDetailsCtrl', function($scope) {
 		 url: 'http://dpunkt.de'
 		}
 	};	
+
+	$scope.goToListView = function() {
+		// use location service to set the url  (windows.location)
+		$location.path('/books');
+	} 
 
 });
