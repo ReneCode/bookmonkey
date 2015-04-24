@@ -90,5 +90,16 @@ describe("E2E: book list view", function() {
 	});
 
 
+	it ('should appropriately navigate to details view', function() {
+		var i = 0,
+				detailsLink = selector + ':nth-child(' + (i+1) + ') a';
+		$(detailsLink).click();
+
+		expect(
+			browser.getCurrentUrl()
+		).toEqual('http://localhost:8000/#/books/' + expectedBooks[i].isbn);
+	});
+
+
 
 });

@@ -9,6 +9,9 @@ bmApp.config(function($routeProvider) {
 	.when('/books', {
 		templateUrl:'templates/book_list.html',
 		controller:'BookListCtrl'
-	});
+	})
+	.otherwise( {
+		redirectTo: '/books'
+	});	
 });
 

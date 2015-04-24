@@ -15,4 +15,14 @@ describe("E2E: book details view", function() {
 		expect(element(by.css('.bm-book-publisher-name')).getAttribute('href')).toBe('http://dpunkt.de/');
 		expect(element(by.css('.bm-book-abstract')).getText()).toBe('JavaScript ist längst nicht mehr nur für klassische Webprogrammierer interessant.');
 	});
+
+
+	it ('should appropriately navigate to list view', function() {
+		browser.get('#/books/978-3-89864-728-1');
+		$('.bm-list-view-btn').click();
+		expect(
+			browser.getCurrentUrl()
+			).toEqual('http://localhost:8000/#/books');
+	});
+
 });
