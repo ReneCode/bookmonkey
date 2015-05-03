@@ -17,13 +17,3 @@ bmApp.config(function($routeProvider) {
 	});	
 });
 
-bmApp.factory('restService', function ($http) {
-    return {
-      auth: function (login,password) {
-        return (login=='login' && pass=='password');
-      },
-      get: function () {
-        return $http.get('/user');
-      }
-    }
-  });
