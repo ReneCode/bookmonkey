@@ -56,6 +56,10 @@ bmApp.service('BookDataService', function() {
   	return angular.copy(srv._books);
   }
 
+  srv.storeBook = function(book) {
+    srv._books.push(book); 
+  }
+
 	// public API
 	return {
 		getBookByIsbn: function(isbn) {
@@ -64,7 +68,32 @@ bmApp.service('BookDataService', function() {
 
 		getBooks: function() {
 			return srv.getBooks();
-		}
+		},
+
+    storeBook: function(book) {
+      srv.storeBook(book);
+    },
+
+    updateBook: function(book) {
+      for (var i=0, n=srv._books.length; i<n; i++) {
+        if (srv._books[i].isbn === book.isbn) {
+          // yes that's the book I want to update
+          angular.extend(srv._books[i], book);
+          return;
+        }
+      }
+    },
+
+    deleteBookByIsbn: function(isbn) {
+      var i = srv._books.length;
+      while (i--) {
+        if (isbn === srv._books[i].isbn) {
+          // remove one element starting a index i
+          srv._books.splice(i, 1);
+          return;
+        }
+      }
+    }
 	};
 });
 
