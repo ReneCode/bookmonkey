@@ -1,3 +1,5 @@
+"use strict";
+
 var bmApp = angular.module('bmApp', ['ngRoute']);
 
 bmApp.config(function($routeProvider) {
@@ -15,3 +17,13 @@ bmApp.config(function($routeProvider) {
 	});	
 });
 
+bmApp.factory('restService', function ($http) {
+    return {
+      auth: function (login,password) {
+        return (login=='login' && pass=='password');
+      },
+      get: function () {
+        return $http.get('/user');
+      }
+    }
+  });

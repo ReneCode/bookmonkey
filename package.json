@@ -7,12 +7,18 @@
     "test": "test"
   },
   "scripts": {
-    "testa": "node_modules/protractor/bin/protractor protractor-e2e-conf.js",
+    "test": "node_modules/protractor/bin/protractor protractor-e2e-conf.js",
     "unit": "node_modules/protractor/bin/protractor protractor-unit-conf.js"
   },
   "author": "ReLang",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^2.3.0",
+    "jasmine-core": "^2.3.0",
+    "karma": "^0.12.31",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.8",
+    "karma-jasmine": "^0.3.5",
     "protractor": "^2.0.0"
   }
 }
